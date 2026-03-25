@@ -24,8 +24,8 @@ import {
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 
-const FAST_LOGO_PLACEHOLDER = "https://picsum.photos/seed/fastlogo/200/80"; // Placeholder for the actual logo
-const RSG_LOGO_PLACEHOLDER = "https://picsum.photos/seed/rsg/150/50"; // Placeholder for RSG reference
+const BRANDING_IMAGE = "https://storage.googleapis.com/static-content-ais-pre-i65ydlk3dqscikbyree3pi-203677055844.europe-west2.run.app/input_file_0.png";
+const FAST_LOGO_FULL = "https://storage.googleapis.com/static-content-ais-pre-i65ydlk3dqscikbyree3pi-203677055844.europe-west2.run.app/input_file_1.png";
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -61,11 +61,15 @@ export default function App() {
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-8'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="h-10 w-24 bg-brand-dark flex items-center justify-center text-white font-display font-bold text-xl tracking-tighter">
-              FAST
+          <div className="flex items-center gap-4">
+            <div className={`h-16 w-32 overflow-hidden flex items-center justify-center transition-all duration-300 ${isScrolled ? 'bg-white' : 'bg-white/90'} px-2 shadow-sm`}>
+              <img 
+                src={FAST_LOGO_FULL} 
+                alt="FAST Finishing Logo" 
+                className="h-full w-full object-contain p-1"
+                referrerPolicy="no-referrer"
+              />
             </div>
-            <span className={`text-[10px] uppercase tracking-[0.3em] font-medium ${isScrolled ? 'text-brand-dark' : 'text-white'}`}>Finishing</span>
           </div>
 
           {/* Desktop Nav */}
@@ -116,12 +120,16 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden bg-brand-dark">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://picsum.photos/seed/neom/1920/1080?grayscale" 
-            alt="NEOM Construction Site" 
-            className="w-full h-full object-cover opacity-40"
-            referrerPolicy="no-referrer"
-          />
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            className="w-full h-full object-cover opacity-30"
+            poster="https://picsum.photos/seed/neom/1920/1080?grayscale"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-construction-site-with-cranes-and-buildings-under-construction-4150-large.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/60 to-transparent" />
         </div>
 
@@ -132,9 +140,12 @@ export default function App() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-[1px] w-12 bg-brand-green" />
-              <span className="text-brand-green text-xs uppercase tracking-[0.4em] font-semibold">Saudi Vision 2030 Partner</span>
+            <div className="flex flex-col gap-2 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="h-[1px] w-12 bg-brand-green" />
+                <span className="text-brand-green text-xs uppercase tracking-[0.4em] font-semibold">Saudi Vision 2030 Partner</span>
+              </div>
+              <div className="text-white/60 text-sm font-medium tracking-wide">شريككم في مشاريع المملكة الكبرى</div>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-display font-bold leading-[0.9] mb-8">
               Precision Finishing for <span className="text-brand-green italic">Giga-Projects</span>
@@ -170,7 +181,15 @@ export default function App() {
       <div className="bg-white border-y border-gray-100 overflow-hidden py-8">
         <div className="marquee-track items-center gap-12 md:gap-24">
           <div className="flex items-center gap-4 whitespace-nowrap">
-            <ShieldCheck className="text-brand-green" size={24} />
+            <div className="h-8 w-24 overflow-hidden flex items-center">
+              <img 
+                src={BRANDING_IMAGE} 
+                alt="Red Sea Global" 
+                className="h-full w-auto object-cover scale-[1.8]"
+                style={{ objectPosition: '5% center' }}
+                referrerPolicy="no-referrer"
+              />
+            </div>
             <span className="text-xs uppercase tracking-widest font-semibold text-gray-500">Aligned with Red Sea Global Standards</span>
           </div>
           <div className="flex items-center gap-4 whitespace-nowrap">
@@ -178,7 +197,15 @@ export default function App() {
             <span className="text-xs uppercase tracking-widest font-semibold text-gray-500">NEOM Approved Subcontractor</span>
           </div>
           <div className="flex items-center gap-4 whitespace-nowrap">
-            <HardHat className="text-brand-accent" size={24} />
+            <div className="h-10 w-10 overflow-hidden rounded-full border border-brand-green/20">
+              <img 
+                src={BRANDING_IMAGE} 
+                alt="Safer Together Badge" 
+                className="h-full w-auto object-cover scale-[2.2]"
+                style={{ objectPosition: '50% center' }}
+                referrerPolicy="no-referrer"
+              />
+            </div>
             <span className="text-xs uppercase tracking-widest font-semibold text-gray-500">"Safer Together" Safety Culture</span>
           </div>
           <div className="flex items-center gap-4 whitespace-nowrap">
@@ -187,7 +214,15 @@ export default function App() {
           </div>
           {/* Repeat for seamless loop */}
           <div className="flex items-center gap-4 whitespace-nowrap">
-            <ShieldCheck className="text-brand-green" size={24} />
+            <div className="h-8 w-24 overflow-hidden flex items-center">
+              <img 
+                src={BRANDING_IMAGE} 
+                alt="Red Sea Global" 
+                className="h-full w-auto object-cover scale-[1.8]"
+                style={{ objectPosition: '5% center' }}
+                referrerPolicy="no-referrer"
+              />
+            </div>
             <span className="text-xs uppercase tracking-widest font-semibold text-gray-500">Aligned with Red Sea Global Standards</span>
           </div>
           <div className="flex items-center gap-4 whitespace-nowrap">
@@ -201,7 +236,10 @@ export default function App() {
       <section id="about" className="section-padding bg-white">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="text-brand-green text-xs uppercase tracking-[0.4em] font-bold mb-4">The FAST Advantage</div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="text-brand-green text-xs uppercase tracking-[0.4em] font-bold">The FAST Advantage</div>
+              <div className="text-brand-green font-bold text-sm">الجودة. السرعة. السلامة.</div>
+            </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight">
               A Reliable Partner for <br /> Saudi Arabia's Future
             </h2>
@@ -383,18 +421,67 @@ export default function App() {
 
       {/* Safety Excellence Section */}
       <section id="safety" className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-brand-green/10 text-brand-green px-4 py-2 rounded-full mb-6">
-            <ShieldCheck size={16} />
-            <span className="text-[10px] uppercase tracking-widest font-bold">Safer Together Culture</span>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div>
+              <div className="inline-flex items-center gap-4 bg-brand-green/5 p-2 pr-6 rounded-full mb-6">
+                <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-brand-green">
+                  <img 
+                    src={BRANDING_IMAGE} 
+                    alt="Safer Together Badge" 
+                    className="h-full w-auto object-cover scale-[2.2]"
+                    style={{ objectPosition: '50% center' }}
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <span className="text-[10px] uppercase tracking-widest font-bold text-brand-green">Safer Together Culture</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Safety is Our Core Identity</h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                In the world of giga-projects, safety isn't just a checkbox—it's the license to operate. We implement rigorous protocols to ensure every worker returns home safely. Our "Safer Together" initiative is a commitment shared by every member of the FAST team.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="text-brand-green" size={20} />
+                  <span className="text-sm font-medium text-brand-dark">Daily HSE Inspections & Audits</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="text-brand-green" size={20} />
+                  <span className="text-sm font-medium text-brand-dark">Certified Safety Officers on Every Site</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="text-brand-green" size={20} />
+                  <span className="text-sm font-medium text-brand-dark">Zero-Tolerance for Safety Violations</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative group">
+              <div className="aspect-video bg-brand-dark overflow-hidden relative">
+                <video 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline 
+                  className="w-full h-full object-cover opacity-60"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-construction-worker-at-a-building-site-4151-large.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-brand-green flex items-center justify-center rounded-full text-white shadow-2xl transition-transform group-hover:scale-110">
+                    <Zap size={32} />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-brand-dark to-transparent">
+                  <div className="text-white text-xs uppercase tracking-widest font-bold">Featured: FAST Safety Commitment</div>
+                </div>
+              </div>
+              <div className="absolute -top-4 -right-4 bg-brand-green text-white px-4 py-2 text-[10px] uppercase tracking-widest font-bold">
+                Live Site Footage
+              </div>
+            </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Safety is Our Core Identity</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            In the world of giga-projects, safety isn't just a checkbox—it's the license to operate. We implement rigorous protocols to ensure every worker returns home safely.
-          </p>
-        </div>
 
-        <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
           {[
             { title: "PTW", label: "Permit to Work", desc: "Strict control over high-risk activities." },
             { title: "TBT", label: "Toolbox Talks", desc: "Daily safety briefings for every team." },
@@ -566,17 +653,20 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-2">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="h-8 w-20 bg-white flex items-center justify-center text-brand-dark font-display font-bold text-lg tracking-tighter">
-                  FAST
-                </div>
-                <span className="text-[10px] uppercase tracking-[0.3em] font-medium text-white/60">Finishing</span>
+              <div className="mb-8 h-24 w-48 overflow-hidden flex items-center bg-white p-2 shadow-sm">
+                <img 
+                  src={FAST_LOGO_FULL} 
+                  alt="FAST Finishing Logo" 
+                  className="h-full w-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <p className="text-gray-400 max-w-sm mb-8">
                 Premium finishing contractor specialized in Saudi Arabia's giga-projects. Delivering quality, speed, and safety in every square meter.
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-2">
                 <div className="text-brand-green font-display font-bold text-sm">الجودة. السرعة. السلامة.</div>
+                <div className="text-white/40 text-xs font-medium">شريككم في مشاريع المملكة الكبرى</div>
               </div>
             </div>
             <div>
