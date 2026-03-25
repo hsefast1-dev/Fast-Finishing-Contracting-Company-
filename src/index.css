@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-brand-dark: #141414;
+  --color-brand-green: #006B3F; /* Deep premium green */
+  --color-brand-blue: #00A3E0; /* Clean project blue */
+  --color-brand-accent: #F27D26; /* Safety orange accent */
+  --color-surface: #F5F5F0;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-surface text-brand-dark antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm;
+}
+
+.section-padding {
+  @apply py-20 px-6 md:px-12 lg:px-24;
+}
+
+.btn-primary {
+  @apply bg-brand-dark text-white px-8 py-4 rounded-none font-medium transition-all hover:bg-brand-green uppercase tracking-widest text-xs;
+}
+
+.btn-outline {
+  @apply border border-brand-dark text-brand-dark px-8 py-4 rounded-none font-medium transition-all hover:bg-brand-dark hover:text-white uppercase tracking-widest text-xs;
+}
+
+.sticky-whatsapp {
+  @apply fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110;
+}
+
+/* Marquee for Trust Bar */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
